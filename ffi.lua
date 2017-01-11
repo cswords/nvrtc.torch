@@ -32,6 +32,24 @@ nvrtcResult nvrtcGetProgramLog(nvrtcProgram prog, char *log);
 local C
 local ok,err = pcall(function() C = ffi.load('libnvrtc') end)
 if not ok then
+   ok,err = pcall(function() C = ffi.load('nvrtc64_80') end)
+end
+if not ok then
+   ok,err = pcall(function() C = ffi.load('nvrtc32_80') end)
+end
+if not ok then
+   ok,err = pcall(function() C = ffi.load('nvrtc64_75') end)
+end
+if not ok then
+   ok,err = pcall(function() C = ffi.load('nvrtc32_75') end)
+end
+if not ok then
+   ok,err = pcall(function() C = ffi.load('nvrtc64_70') end)
+end
+if not ok then
+   ok,err = pcall(function() C = ffi.load('nvrtc32_70') end)
+end
+if not ok then
    print(err)
    error([['libnvrtc.so not found in library path.
 Please install CUDA version 7 or higher.
